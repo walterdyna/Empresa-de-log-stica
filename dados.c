@@ -15,7 +15,7 @@ typedef struct {
 Produto estoque[MAX_ESTOQUE];
 int topo = -1;
 
-// Função para adicionar produto ao estoque
+// Funções do programa
 void adicionarProduto() {
     if (topo == MAX_ESTOQUE - 1) {
         printf("Armazém cheio. Não é possível adicionar mais produtos.\n");
@@ -36,7 +36,6 @@ void adicionarProduto() {
     printf("Produto adicionado com sucesso!\n");
 }
 
-// Função para remover produto do estoque
 void removerProduto() {
     if (topo == -1) {
         printf("Armazém vazio. Não há produtos para remover.\n");
@@ -47,7 +46,6 @@ void removerProduto() {
     topo--;
 }
 
-// Função para verificar se um produto está no armazém
 void verificarProduto() {
     int codigo;
     printf("Digite o código do produto para verificar: ");
@@ -62,7 +60,6 @@ void verificarProduto() {
     printf("Produto não encontrado no armazém.\n");
 }
 
-// Função para exibir todos os produtos do armazém
 void exibirProdutos() {
     if (topo == -1) {
         printf("Armazém vazio.\n");
@@ -75,7 +72,6 @@ void exibirProdutos() {
     }
 }
 
-// Função para vender um produto
 void venderProduto() {
     int codigo, quantidade, continuar, encontrado = 0;
     char nome[50];
@@ -86,7 +82,7 @@ void venderProduto() {
 
     do {
         encontrado = 0;
-        if (continuar == 1) { // Procura por código
+        if (continuar == 1) {
             printf("Digite o código do produto: ");
             scanf("%d", &codigo);
 
@@ -107,7 +103,7 @@ void venderProduto() {
                     break;
                 }
             }
-        } else if (continuar == 2) { // Procura por nome
+        } else if (continuar == 2) {
             printf("Digite o nome do produto: ");
             scanf("%s", nome);
 
@@ -142,11 +138,42 @@ void venderProduto() {
     printf("Total da compra: %.2f\n", total);
 }
 
-// Função principal
+void sobreDesenvolvedor() {
+    int opcao;
+
+    do {
+        printf("\nSobre o Desenvolvedor:\n");
+        printf("1. Ir para o site do desenvolvedor\n");
+        printf("2. Chamar no WhatsApp\n");
+        printf("3. Ir para o GitHub do projeto\n");
+        printf("4. Voltar ao menu principal\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+            case 1:
+                printf("Abrindo site: www.walterdyna.com.br\n");
+                break;
+            case 2:
+                printf("Abrindo WhatsApp: https://w.app/SZPGlC\n");
+                break;
+            case 3:
+                printf("Abrindo GitHub: https://github.com/walterdyna/Empresa-de-log-stica\n");
+                break;
+            case 4:
+                return;
+            default:
+                printf("Opção inválida. Tente novamente.\n");
+                break;
+        }
+    } while (1);
+}
+
 int main() {
     int opcao;
 
     do {
+        printf("\nBem-vindo à Empresa DynaS Logística LTDA\n");
         printf("\nMenu:\n");
         printf("1. Adicionar Produto\n");
         printf("2. Remover Produto\n");
@@ -154,6 +181,7 @@ int main() {
         printf("4. Exibir Produtos\n");
         printf("5. Sair\n");
         printf("6. Vender Produto\n");
+        printf("7. Sobre o Desenvolvedor\n");
         printf("Escolha uma opção: ");
         scanf("%d", &opcao);
 
@@ -172,6 +200,9 @@ int main() {
                 break;
             case 6:
                 venderProduto();
+                break;
+            case 7:
+                sobreDesenvolvedor();
                 break;
             case 5:
                 printf("Encerrando o programa.\n");
